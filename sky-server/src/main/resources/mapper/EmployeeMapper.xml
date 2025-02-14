@@ -8,7 +8,7 @@
             (#{name},#{username},#{password},#{phone},#{sex},#{idNumber},#{status},#{createTime},#{updateTime},#{createUser},#{updateUser});
     </insert>
 
-<!--因为pageHelper所以不需要写limit条件来指定分页查询-->
+    <!--因为pageHelper所以不需要写limit条件来指定分页查询-->
     <select id="pageQuery" resultType="com.sky.entity.Employee">
         select * from employee
         <where>
@@ -18,4 +18,39 @@
         </where>
         order by create_time desc
     </select>
+
+    <!--这是动态SQL，修改类的操作都可以调用这条SQL-->
+    <update id="update">
+        update employee
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="idNumber != null">
+                idNumber = #{idNumber},
+            </if>
+            <if test="updateTime != null">
+                updateTime = #{updateTime},
+            </if>
+            <if test="updateUser != null">
+                updateUser = #{updateUser},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>
