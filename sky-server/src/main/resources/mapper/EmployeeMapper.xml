@@ -39,13 +39,13 @@
                 sex = #{sex},
             </if>
             <if test="idNumber != null">
-                idNumber = #{idNumber},
+                id_number = #{idNumber},
             </if>
             <if test="updateTime != null">
-                updateTime = #{updateTime},
+                update_time = #{updateTime},
             </if>
             <if test="updateUser != null">
-                updateUser = #{updateUser},
+                update_user = #{updateUser},
             </if>
             <if test="status != null">
                 status = #{status},
@@ -53,4 +53,11 @@
         </set>
         where id = #{id}
     </update>
+
+    <select id="getById" resultType="com.sky.entity.Employee">
+        select * from employee
+        <where>
+            id= #{id}
+        </where>
+    </select>
 </mapper>

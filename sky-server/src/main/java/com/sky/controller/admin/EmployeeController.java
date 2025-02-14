@@ -76,7 +76,9 @@ public class EmployeeController {
         return Result.success();
     }
 
-    //新增员工
+    /**
+     * 新增员工
+     */
     @PostMapping
     @ApiOperation("新增员工")
     public Result save(@RequestBody EmployeeDTO employeeDTO){
@@ -112,6 +114,31 @@ public class EmployeeController {
         log.info("启用禁用员工账号:{},{}",status,id);
         //调用service实现功能
         employeeService.starterOrStop(status,id);
+        return Result.success();
+    }
+
+    /**
+     * 查询员工信息（需指定泛型，查询性的操作需要明确给前端提交数据的形式 -- 所有操作设计源于接口文档）
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    @ApiOperation("根据id查询员工信息")
+    public Result<Employee> getById(@PathVariable("id") Long id){
+        log.info("查询到员工ID为:{}",id);
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
+    }
+
+    /**
+     * 编辑员工信息(不是查询性的操作，不指定泛型)
+     * @return
+     */
+    @PutMapping
+    @ApiOperation("编辑员工信息")
+    private Result upDate(@RequestBody EmployeeDTO employeeDTO){
+        log.info("修改员工信息:{}",employeeDTO);
+        employeeService.upDate(employeeDTO);
         return Result.success();
     }
 }
