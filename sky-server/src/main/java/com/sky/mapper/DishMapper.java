@@ -46,4 +46,11 @@ public interface DishMapper {
      * @param id
      */
     void deleteById(Long id);
+
+    /**
+     * 根据id动态修改菜品基本信息（写成动态的，dish里面有值的时候在进行修改）
+     * @param dish
+     */
+    @AutoFill(value = OperationType.UPDATE)//空的上传人，上传时间等信息自动填充
+    void update(Dish dish);
 }

@@ -15,5 +15,9 @@
         delete from dish_flavor where dish_id = #{id};
     </delete>
 
+    <select id="getBydishid" resultType="com.sky.entity.DishFlavor">
+        select * from dish_flavor where dish_id = #{dishId};
+    </select>
+
 
 </mapper>
