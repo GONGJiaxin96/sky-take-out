@@ -23,7 +23,7 @@ public class CommonController {
     private AliOssUtil aliOssUtil;
 
     //阿里云请求路径，所以用String 接收的是文件类型形参里用spring封装的MultipartFile对象就可以，参数名要和前端提交的参数名要保持一致
-    @  PostMapping("/upload")
+    @PostMapping("/upload")
     @ApiOperation("文件上传")
     public Result<String> upload(MultipartFile file){
         log.info("文件上传:{}",file);

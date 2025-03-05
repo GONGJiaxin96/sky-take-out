@@ -12,3 +12,9 @@ sky:
     access-key-id: LTAI5tFThytojD2EqrekhbvB
     access-key-secret: 3Hbj6B8m1lDoDsfdVhgCGqK3bhN9dF
     bucket-name: sky-itcast-gjx
+
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 10
